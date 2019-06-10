@@ -1,0 +1,7 @@
+{
+  "name": "mobileCater",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
