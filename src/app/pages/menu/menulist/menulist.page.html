@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    <ion-button (click)="goBack()">
+      <ion-icon slot="icon-only" icon="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+    <ion-title>Menu List</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToCart()">
+        <ion-icon slot="icon-only" icon="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row wrap>
+      <ion-col *ngFor="let menu of menus" size="4" (click)="modalMenuDetail(menu.id)">
+        <ion-card>
+          <ion-img [src]="this.utilService.getImageUrl(menu.menu_image)"></ion-img>
+          <ion-card-header>
+            <ion-card-title>{{ menu.menu_name }}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            Rp.{{menu.menu_price}}
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

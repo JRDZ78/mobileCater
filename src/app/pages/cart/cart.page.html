@@ -1,0 +1,83 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Your Cart</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="user != undefined">
+    <form #form="ngForm" (ngSubmit)="checkOut(form)" method="post">
+        <ion-input ngModel name="user_id" [(ngModel)]="user.id" hidden></ion-input>
+        <ion-list *ngFor="let cart of carts; let i = index;">
+
+            <ion-card>
+                <ion-grid>
+                    <ion-row>
+
+                        <ion-input name="menu_id" [(ngModel)]="cart.menu_id" hidden></ion-input>
+                        <ion-input name="cater_id" [(ngModel)]="cart.cater_id" hidden></ion-input>
+
+                        <ion-col size="2.5">{{cart.menu_name}}</ion-col>
+                        <ion-col size="2.5">{{cart.cater_name}}</ion-col>
+                        <ion-col size="2.5">Rp.{{cart.menu_price * carts[i].quantity}}</ion-col>
+                        <ion-col size="2.5">
+                            <ion-row>
+                                <ion-col size="4">
+                                    <ion-buttons size="large" (click)="dec(i)">
+                                        <ion-icon name="remove-circle-outline"></ion-icon>
+                                    </ion-buttons>
+                                </ion-col>
+                                <ion-col size="4">{{carts[i].quantity}}</ion-col>
+                                <ion-col size="4">
+                                    <ion-buttons size="large" (click)="inc(i)">
+                                        <ion-icon name="add-circle-outline"></ion-icon>
+                                    </ion-buttons>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                        <ion-col size="2">
+                            <ion-button (click)="deleteCart(cart.id)">
+                                <ion-icon name="close"></ion-icon>
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <ion-row>
+                    <ion-col>Order Day</ion-col>
+                    <ion-col><ion-checkbox [disabled]="splitString(cart.weekday,'1')" (ionChange)="onCheckedWeekday(i,'1',$event)" ></ion-checkbox>Mon</ion-col>
+                    <ion-col><ion-checkbox [disabled]="splitString(cart.weekday,'2')" (ionChange)="onCheckedWeekday(i,'2',$event)" ></ion-checkbox>Tue</ion-col>
+                    <ion-col><ion-checkbox [disabled]="splitString(cart.weekday,'3')" (ionChange)="onCheckedWeekday(i,'3',$event)" ></ion-checkbox>Wen</ion-col>
+                    <ion-col><ion-checkbox [disabled]="splitString(cart.weekday,'4')" (ionChange)="onCheckedWeekday(i,'4',$event)" ></ion-checkbox>Thu</ion-col>
+                    <ion-col><ion-checkbox [disabled]="splitString(cart.weekday,'5')" (ionChange)="onCheckedWeekday(i,'5',$event)" ></ion-checkbox>Fri</ion-col>
+                    <ion-col><ion-checkbox [disabled]="splitString(cart.weekday,'6')" (ionChange)="onCheckedWeekday(i,'6',$event)" ></ion-checkbox>Sat</ion-col>
+                    <ion-col><ion-checkbox [disabled]="splitString(cart.weekday,'0')" (ionChange)="onCheckedWeekday(i,'0',$event)" ></ion-checkbox>Sun</ion-col>
+                </ion-row>
+            </ion-card>
+        </ion-list>
+        <ion-item>
+            Total: <span slot="end">Rp.{{totalAmount}}</span>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Deliver Date</ion-label>
+            <ion-datetime displayFormat="DD-MM-YYYY" ngModel name="deliver_date" [min]="today"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>Deliver Duration</ion-label>
+            <ion-select value="brown" okText="Okay" cancelText="Dismiss" ngModel name="dateValue" (ionChange)="onChange($event)">
+                <ion-select-option [value]="1">One Day</ion-select-option>
+                <ion-select-option [value]="7">One Week</ion-select-option>
+                <ion-select-option [value]="14">Two Week</ion-select-option>
+                <ion-select-option [value]="30">One Month</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Deliver Location (please specify accurately)</ion-label>
+            <ion-textarea ngModel name="deliver_location"></ion-textarea>
+        </ion-item>
+
+        <ion-button type="submit" expand="full" color="primary" [disabled]="checkTotal(totalAmount)">Check Out</ion-button>
+
+    </form>
+</ion-content>

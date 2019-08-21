@@ -1,7 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button color="light" (click)="dismissLogin()">Close</ion-button>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissLogin()">
+      <ion-icon slot="icon-only" icon="close"></ion-icon>
+    </ion-button>
+    </ion-buttons>
     <ion-title>Login</ion-title>
+
   </ion-toolbar>
 </ion-header>
 <ion-content padding>

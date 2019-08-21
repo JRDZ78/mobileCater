@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="user != undefined">
+  <ion-list id="home-list2">
+    <ion-item color="none" id="home-list-item7">
+      <ion-avatar item-left >
+        <img [src]="this.utilService.getImageUrl(user.avatar)" />
+      </ion-avatar>
+      <h2>
+        {{user["username"]}}
+      </h2>
+    </ion-item>
+    <ion-item>
+      <ion-col size="4">Full Name:</ion-col>
+      <ion-col size="8">{{user["firstname"]}} {{user["lastname"]}}</ion-col>
+    </ion-item>
+    <ion-item>
+      <ion-col size="4">Email:</ion-col>
+      <ion-col size="8">{{user["email"]}}</ion-col>
+    </ion-item>
+    <ion-item >
+      <ion-col size="4">Phone:</ion-col>
+      <ion-col size="8">{{user["phone"]}}</ion-col>
+    </ion-item>
+    <ion-item >
+      <ion-col size="4">Address:</ion-col>
+      <ion-col size="8">{{user["address"]}}</ion-col>
+    </ion-item>
+    <ion-item >
+      <ion-col size="4">Date of Birth:</ion-col>
+      <ion-col size="8">{{user["date_of_birth"]| date: 'dd MMMM yyyy' }}</ion-col>
+    </ion-item>
+  </ion-list>
+  <ion-row>
+        <ion-col>
+          <ion-button color="primary" expand="full" color="primary" (click)="pushEditProfile()">Change Profile</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button color="primary" expand="full" color="danger" (click)="pushEditPassword()">Change Password</ion-button>
+        </ion-col>
+      </ion-row>
+</ion-content>

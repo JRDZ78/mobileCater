@@ -22,6 +22,13 @@ const routes: Routes = [
   { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule', canActivate: [AuthGuard] },
   { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [AuthGuard] },
   { path: 'list', loadChildren: './list/list.module#ListPageModule', canActivate: [AuthGuard] },
+  { path: 'menulist/:id', loadChildren: './pages/menu/menulist/menulist.module#MenulistPageModule' },
+  { path: 'menudetail', loadChildren: './pages/menu/menudetail/menudetail.module#MenudetailPageModule' },
+  { path: 'cart', loadChildren: './pages/cart/cart.module#CartPageModule' },
+  { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
+  { path: 'edit-profile', loadChildren: './pages/profile/edit-profile/edit-profile.module#EditProfilePageModule' },
+  { path: 'edit-password', loadChildren: './pages/profile/edit-password/edit-password.module#EditPasswordPageModule' },
+  { path: 'order', loadChildren: './pages/order/order.module#OrderPageModule' },
 ];
 
 @NgModule({

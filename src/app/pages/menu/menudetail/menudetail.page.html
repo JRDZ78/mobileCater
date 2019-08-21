@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+      <ion-icon slot="icon-only" icon="close"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+    <ion-title>{{ menu_details["menu_name"]}}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="menu_details != undefined">
+  <ion-img [src]="this.utilService.getImageUrl(menu_details.menu_image)"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Rp.{{ menu_details["menu_price"]}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{menu_details["menu_description"]}}
+    </ion-card-content>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-col>
+            <ion-button (click)="addToCart(user.id,menu_details.id,menu_details.catering_service_id)">Add To Cart</ion-button>
+        </ion-col>
+    </ion-toolbar>
+</ion-footer>

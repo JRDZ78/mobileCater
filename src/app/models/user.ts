@@ -8,4 +8,5 @@ export class User {
     phone: number;
     address: Text;
     date_of_birth: Date;
+    avatar: string;
 }

@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="icon-only" icon="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Edit Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="editProfile(form,user.id)" method="post">
+
+  	<ion-item>
+        <ion-label position="stacked">Username</ion-label>
+        <ion-input ngModel name="username" [(ngModel)]="user.username"></ion-input>
+    </ion-item>
+
+	<ion-row>
+		<ion-col col-6>
+		    <ion-item>
+		        <ion-label position="stacked">First Name</ion-label>
+		        <ion-input ngModel name="firstname" [(ngModel)]="user.firstname"></ion-input>
+		    </ion-item>
+	    </ion-col>
+	  	<ion-col col-6>
+		    <ion-item>
+		      <ion-label position="stacked">Last Name</ion-label>
+		      <ion-input ngModel name="lastname" [(ngModel)]="user.lastname"></ion-input>
+		    </ion-item>
+	    </ion-col>
+    </ion-row>
+
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input type="email" ngModel name="email" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Phone</ion-label>
+      <ion-input type="tel" ngModel name="phone" [(ngModel)]="user.phone"></ion-input>
+    </ion-item>
+
+	<ion-item>
+      <ion-label position="stacked">Date Of Birth</ion-label>
+      <ion-input type="date" ngModel name="date_of_birth" [(ngModel)]="user.date_of_birth"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Address</ion-label>
+      <ion-textarea ngModel name="address" [(ngModel)]="user.address"></ion-textarea>
+    </ion-item>
+
+    <ion-button type="submit" expand="full" color="danger">Update</ion-button>
+  </form>
+</ion-content>

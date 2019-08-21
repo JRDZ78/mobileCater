@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DashboardPage } from './dashboard.page';
-import {MenulistPage} from "../menu/menulist/menulist.page";
+import { EditProfilePage } from './edit-profile.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardPage
+    component: EditProfilePage
   }
 ];
 
@@ -22,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DashboardPage]
+  declarations: [EditProfilePage]
 })
-export class DashboardPageModule {}
+export class EditProfilePageModule {}

@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Order List</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngFor="let order of orders; let i = index;">
+        <ion-card>
+            <ion-row>
+                <ion-col size="2.5"><ion-img [src]="this.utilService.getImageUrl(order.menu_image)"></ion-img></ion-col>
+                <ion-col size="4.5">
+                    <div style="font-size: large; font-style: italic; color: black;">{{order.menu_name}}</div>
+                    <div>Quantity: {{order.quantity}}</div>
+                    <div>Rp.{{order.price}}</div>
+                    <div>{{order.cater_name}}</div>
+                </ion-col>
+                <ion-col size="5">
+                    <div>Deliver At: {{order.deliver_date | date: 'dd-MM-yyyy'}} </div>
+                    <div>Status: {{order.status}}</div>
+                    <ion-row>
+                        <ion-col size="8"><ion-button color="danger">Complain</ion-button></ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </ion-list>
+
+</ion-content>
